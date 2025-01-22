@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delayed Message</title>
+</head>
+<body>
+    <div>
+        <label for="message">Enter Message:</label>
+        <input type="text" id="message" placeholder="Type your message here">
+    </div>
+    <div>
+        <label for="delay">Enter Delay (ms):</label>
+        <input type="number" id="delay" placeholder="Enter delay in milliseconds">
+    </div>
+    <button id="showMessage">Show Delayed Message</button>
+    <p id="output"></p>
+
+    <script>
+        document.getElementById('showMessage').addEventListener('click', () => {
+            const message = document.getElementById('message').value;
+            const delay = parseInt(document.getElementById('delay').value, 10);
+            const output = document.getElementById('output');
+
+            if (!message || isNaN(delay) || delay < 0) {
+                output.textContent = "Please enter a valid message and delay!";
+                return;
+            }
+
+            setTimeout(() => {
+                output.textContent = message;
+            }, delay);
+        });
+    </script>
+</body>
+</html>

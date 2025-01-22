@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBack Chain</title>
+    <script>
+        function mul(num,callback)
+        {
+            let num1=num*2;
+            callback(num1,add);
+        }
+        function sub(num,callback)
+        {
+            let num1=num-3;
+            callback(num1);
+        }
+        function add(num)
+        {
+            let num1=num+10;
+            document.getElementById("id1").innerHTML=num1;
+        }
+        function onSubmit()
+        {
+            const num=document.getElementById("number").value;
+            if(num !== "")
+            {
+               mul(num,sub);
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="number">Enter a Number:</label>
+    <input type="number" id="number" placeholder="Enter your Number">
+    <button onclick="onSubmit()">Operate</button>
+    <p id="id1"></p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- // Question 1: Write a function greet that takes a name and a callback function.
+// The function should return a greeting message by calling the callback with
+// the message. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Application</title>
+<script>
+        function greet(name,callback)
+        {
+            const message=`hello,${name}`;
+            callback(message);
+        }
+        function bye(message)
+        {
+            document.getElementById("id1").innerHTML=message;
+        }
+        function Onsubmit()
+        {
+            const name=document.getElementById("name").value;
+            if(name.trim() !== "")
+            {
+                greet(name,bye);
+            }
+        }
+</script>
+</head>
+<body>
+    <h1>Greeting Application</h1>
+    <label for="name">Enter name:</label>
+    <input type="text" id="name" placeholder="enter name">
+    <button onclick="Onsubmit()">Greet</button>
+    <p id="id1"></p>
+</body>
+</html>

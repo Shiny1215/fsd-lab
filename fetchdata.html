@@ -1,0 +1,46 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="text" id="enurl" placeholder="Enter URL">
+        <button onclick="tsuccessfailure()">Click here</button>
+        <h1 id="idd"></h1>
+        <script>
+            function call(url, callback) {
+
+                setTimeout(function() {
+                    const success = Math.random() > 0.5;
+
+                    if (success) {
+                        const response = { data: 'Fetched data from ' + url };
+                        callback(null, response);
+                    } else {
+                        const error = 'Failed to fetch data from ' + url;
+                        callback(error, null);
+                    }
+                }, 2000);
+            }
+
+            function success(error, data) {
+                if (error) {
+                    document.getElementById("idd").innerHTML = `Error: ${error}`;
+                } else {
+                    document.getElementById("idd").innerHTML = `Success: ${data.data}`;
+                }
+            }
+
+            function tsuccessfailure() {
+                const url = document.getElementById("enurl").value;
+
+                if (url.trim() === "") {
+                    alert("Please enter a valid URL.");
+                    return;
+                }
+
+
+                call(url, success);
+            }
+        </script>
+    </body>
+</html>
+
